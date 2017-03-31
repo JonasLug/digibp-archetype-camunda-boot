@@ -12,8 +12,9 @@
         <flowNodeRef>service_task_publish_on_twitter</flowNodeRef>
         <flowNodeRef>start_event_new_tweet</flowNodeRef>
         <flowNodeRef>user_task_review_tweet</flowNodeRef>
-        <flowNodeRef>end_event_tweet_handled</flowNodeRef>
         <flowNodeRef>StartEvent_0xv0frq</flowNodeRef>
+        <flowNodeRef>end_event_tweet_handled</flowNodeRef>
+        <flowNodeRef>IntermediateThrowEvent_02jwwuj</flowNodeRef>
       </lane>
       <lane id="Lane_0farnrf" name="HR Assistant" />
       <lane id="Lane_1wlmyno" name="Recruitment System" />
@@ -88,12 +89,17 @@
       <conditionExpression xsi:type="tFormalExpression" id="FormalExpression_2">#{approved}</conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="SequenceFlow_3" name="" sourceRef="service_task_publish_on_twitter" targetRef="gateway_join" />
-    <sequenceFlow id="SequenceFlow_5" name="" sourceRef="gateway_join" targetRef="end_event_tweet_handled" />
+    <sequenceFlow id="SequenceFlow_5" name="" sourceRef="gateway_join" targetRef="IntermediateThrowEvent_02jwwuj" />
     <sequenceFlow id="SequenceFlow_9" name="" sourceRef="start_event_new_tweet" targetRef="user_task_review_tweet" />
-    <endEvent id="end_event_tweet_handled" name="Tweet handled">
-      <incoming>SequenceFlow_5</incoming>
-    </endEvent>
     <startEvent id="StartEvent_0xv0frq" name="TEST" />
+    <endEvent id="end_event_tweet_handled" name="Tweet handled">
+      <incoming>SequenceFlow_1ldqo5a</incoming>
+    </endEvent>
+    <intermediateThrowEvent id="IntermediateThrowEvent_02jwwuj">
+      <incoming>SequenceFlow_5</incoming>
+      <outgoing>SequenceFlow_1ldqo5a</outgoing>
+    </intermediateThrowEvent>
+    <sequenceFlow id="SequenceFlow_1ldqo5a" sourceRef="IntermediateThrowEvent_02jwwuj" targetRef="end_event_tweet_handled" />
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_TwitterDemoProcess">
     <bpmndi:BPMNPlane id="BPMNPlane_TwitterDemoProcess" bpmnElement="Collaboration_09ee7iw">
@@ -172,11 +178,11 @@
           <omgdc:Bounds x="616" y="35" width="90" height="6" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_5" bpmnElement="SequenceFlow_5" sourceElement="BPMNShape_Exclusive_Databased_Gateway_3" targetElement="BPMNShape_EndNoneEvent_3">
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_5" bpmnElement="SequenceFlow_5" sourceElement="BPMNShape_Exclusive_Databased_Gateway_3" targetElement="IntermediateThrowEvent_02jwwuj_di">
         <omgdi:waypoint xsi:type="omgdc:Point" x="686" y="-57" />
-        <omgdi:waypoint xsi:type="omgdc:Point" x="813" y="-57" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="723" y="-57" />
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds x="704.5" y="-75" width="90" height="6" />
+          <omgdc:Bounds x="659.5" y="-75" width="90" height="6" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_9" bpmnElement="SequenceFlow_9" sourceElement="BPMNShape_new_tweet_3" targetElement="BPMNShape_Review_Tweet_3">
@@ -201,6 +207,19 @@
           <omgdc:Bounds x="812" y="44" width="29" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="IntermediateThrowEvent_02jwwuj_di" bpmnElement="IntermediateThrowEvent_02jwwuj">
+        <omgdc:Bounds x="723.0052687038988" y="-75" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="741.0052687038988" y="-36" width="0" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1ldqo5a_di" bpmnElement="SequenceFlow_1ldqo5a">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="759" y="-57" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="813" y="-57" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="786" y="-79" width="0" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </definitions>
