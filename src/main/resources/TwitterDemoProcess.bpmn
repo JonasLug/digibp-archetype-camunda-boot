@@ -96,7 +96,7 @@
     <endEvent id="end_event_tweet_handled" name="Tweet handled">
       <incoming>SequenceFlow_5</incoming>
     </endEvent>
-    <startEvent id="StartEvent_0xv0frq" />
+    <startEvent id="StartEvent_0xv0frq" name="TEST" />
   </process>
   <process id="Process_086ar4c" isExecutable="false">
     <laneSet>
@@ -748,7 +748,7 @@
       <bpmndi:BPMNShape id="StartEvent_0xv0frq_di" bpmnElement="StartEvent_0xv0frq">
         <omgdc:Bounds x="808" y="5" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds x="826" y="44" width="0" height="13" />
+          <omgdc:Bounds x="812" y="44" width="29" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
