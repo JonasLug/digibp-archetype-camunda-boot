@@ -11,10 +11,11 @@
         <flowNodeRef>gateway_approved</flowNodeRef>
         <flowNodeRef>gateway_join</flowNodeRef>
         <flowNodeRef>service_task_publish_on_twitter</flowNodeRef>
-        <flowNodeRef>end_event_tweet_handled</flowNodeRef>
         <flowNodeRef>start_event_new_tweet</flowNodeRef>
         <flowNodeRef>user_task_review_tweet</flowNodeRef>
         <flowNodeRef>UserTask_0cbuv59</flowNodeRef>
+        <flowNodeRef>end_event_tweet_handled</flowNodeRef>
+        <flowNodeRef>StartEvent_0xv0frq</flowNodeRef>
       </lane>
       <lane id="Lane_0farnrf" name="HR Assistant" />
       <lane id="Lane_1wlmyno" name="Recruitment System" />
@@ -52,9 +53,6 @@
       <incoming>yes</incoming>
       <outgoing>SequenceFlow_3</outgoing>
     </serviceTask>
-    <endEvent id="end_event_tweet_handled" name="Tweet handled">
-      <incoming>SequenceFlow_5</incoming>
-    </endEvent>
     <startEvent id="start_event_new_tweet" name="Tweet written" camunda:formKey="embedded:app:forms/createTweet.html" camunda:initiator="initiator">
       <extensionElements>
         <camunda:properties>
@@ -95,6 +93,10 @@
     <sequenceFlow id="SequenceFlow_5" name="" sourceRef="gateway_join" targetRef="end_event_tweet_handled" />
     <sequenceFlow id="SequenceFlow_9" name="" sourceRef="start_event_new_tweet" targetRef="user_task_review_tweet" />
     <userTask id="UserTask_0cbuv59" name="Define the Job Requirement" />
+    <endEvent id="end_event_tweet_handled" name="Tweet handled">
+      <incoming>SequenceFlow_5</incoming>
+    </endEvent>
+    <startEvent id="StartEvent_0xv0frq" />
   </process>
   <process id="Process_086ar4c" isExecutable="false">
     <laneSet>
@@ -311,9 +313,9 @@
         <omgdc:Bounds x="511" y="-17" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_EndNoneEvent_3" bpmnElement="end_event_tweet_handled">
-        <omgdc:Bounds x="801" y="-71" width="28" height="28" />
+        <omgdc:Bounds x="812" y="-71" width="28" height="28" />
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds x="780" y="-41" width="72" height="12" />
+          <omgdc:Bounds x="791" y="-41" width="72" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_new_tweet_3" bpmnElement="start_event_new_tweet">
@@ -366,9 +368,9 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_5" bpmnElement="SequenceFlow_5" sourceElement="BPMNShape_Exclusive_Databased_Gateway_3" targetElement="BPMNShape_EndNoneEvent_3">
         <omgdi:waypoint xsi:type="omgdc:Point" x="686" y="-57" />
-        <omgdi:waypoint xsi:type="omgdc:Point" x="801" y="-57" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="813" y="-57" />
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds x="699" y="-64" width="90" height="6" />
+          <omgdc:Bounds x="704.5" y="-75" width="90" height="6" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_9" bpmnElement="SequenceFlow_9" sourceElement="BPMNShape_new_tweet_3" targetElement="BPMNShape_Review_Tweet_3">
@@ -743,6 +745,12 @@
           <omgdc:Bounds x="-949" y="834.5" width="15" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="StartEvent_0xv0frq_di" bpmnElement="StartEvent_0xv0frq">
+        <omgdc:Bounds x="808" y="5" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="826" y="44" width="0" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </definitions>
